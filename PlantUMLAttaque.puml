@@ -1,0 +1,28 @@
+@startuml
+
+partition Client(Attaque) {
+  (*) --> "Demande d'attaque"
+  --> === A === 
+  if "Frontiere commune" then
+  -->[true] "Attaque par terre"
+  --> "Preparer dés"
+else
+  ->[false] "Attaque par mer"
+  --> "Preparer dés"
+  
+endif
+  
+}
+
+partition Serveur {
+  === A === --> "Communication" 
+  
+}
+
+partition Client(Defense) {
+   "Communication" --> "Alerte" 
+   --> === S2 ===
+  
+}
+
+@enduml
